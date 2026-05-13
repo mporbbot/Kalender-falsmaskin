@@ -108,3 +108,11 @@ font-size:10px;
 }
 
 }
+.danger{
+background:#d93025;
+}
+
+#message{
+font-weight:bold;
+min-height:22px;
+}
