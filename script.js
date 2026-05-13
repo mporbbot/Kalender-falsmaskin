@@ -58,7 +58,15 @@ function buildSchedule(jobs){
 
 const WORK_START_MINUTES = 5 * 60 + 45;
 const WORK_END_MINUTES = 14 * 60 + 30;
-const DAY_CAPACITY = WORK_END_MINUTES - WORK_START_MINUTES;
+function getWorkEndMinutes(d){
+  // Fredag = 12:00
+  if(d.getDay() === 5){
+    return 12 * 60;
+  }
+
+  // Måndag–torsdag = 14:30
+  return 14 * 60 + 30;
+}
 
 let allParts=[];
 
@@ -99,7 +107,9 @@ usedPerDay[dText]=0;
 }
 
 let usedToday=usedPerDay[dText];
-let freeMinutes=DAY_CAPACITY-usedToday;
+let workEndMinutes=getWorkEndMinutes(d);
+let dayCapacity=workEndMinutes-WORK_START_MINUTES;
+let freeMinutes=dayCapacity-usedToday;
 
 if(freeMinutes<=0){
 d=nextWorkday(d);
