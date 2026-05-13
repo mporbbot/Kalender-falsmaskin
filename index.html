@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Falsmaskin Planering</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+<h1>Falsmaskin Planering</h1>
+
+<div class="form-box">
+<input id="jobName" placeholder="Jobbnamn">
+
+<div class="row">
+<div>
+<label>Startdatum</label>
+<input type="date" id="startDate">
+</div>
+<div>
+<label>Leveransdatum</label>
+<input type="date" id="deliveryDate">
+</div>
+</div>
+
+<div class="row">
+<div>
+<label>Timmar</label>
+<input type="number" id="hours" min="1" step="1" placeholder="14">
+</div>
+<div>
+<label>Maskin</label>
+<select id="machine">
+<option value="1">Falsmaskin 1</option>
+<option value="2">Falsmaskin 2</option>
+</select>
+</div>
+</div>
+
+<label>Placering</label>
+<select id="insertMode">
+<option value="last">Lägg sist</option>
+<option value="between">Lägg in från startdatum och flytta efterföljande jobb</option>
+</select>
+
+<button onclick="addJob()">Lägg till jobb</button>
+<button class="danger" onclick="clearJobs()">Rensa alla jobb</button>
+<p id="message"></p>
+</div>
+
+<div class="calendar-header">
+<button onclick="prevMonth()">‹</button>
+<h2 id="monthTitle"></h2>
+<button onclick="nextMonth()">›</button>
+</div>
+
+<div class="weekdays">
+<div>Mån</div><div>Tis</div><div>Ons</div><div>Tor</div><div>Fre</div><div>Lör</div><div>Sön</div>
+</div>
+
+<div id="calendar" class="calendar"></div>
+</div>
+
+<div id="editModal" class="modal">
+<div class="modal-box">
+<h2>Ändra jobb</h2>
+
+<input type="hidden" id="editId">
+
+<label>Jobbnamn</label>
+<input id="editName">
+
+<label>Startdatum</label>
+<input type="date" id="editStart">
+
+<label>Leveransdatum</label>
+<input type="date" id="editDelivery">
+
+<label>Timmar</label>
+<input type="number" id="editHours" min="1" step="1">
+
+<label>Maskin</label>
+<select id="editMachine">
+<option value="1">Falsmaskin 1</option>
+<option value="2">Falsmaskin 2</option>
+</select>
+
+<button onclick="saveEdit()">Spara ändring</button>
+<button class="danger" onclick="deleteEditJob()">Ta bort jobb</button>
+<button class="cancel" onclick="closeEdit()">Stäng</button>
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
