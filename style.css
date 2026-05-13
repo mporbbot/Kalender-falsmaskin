@@ -113,5 +113,25 @@ background:#d93025;
 
 #message{
 font-weight:bold;
-min-height:22px;
+min-height:.modal{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.7);
+z-index:99;
+align-items:center;
+justify-content:center;
+padding:15px;
+}
+
+.modal-box{
+background:#2b2c30;
+padding:18px;
+border-radius:16px;
+width:100%;
+max-width:420px;
+}
+
+.cancel{
+background:#666;
 }
